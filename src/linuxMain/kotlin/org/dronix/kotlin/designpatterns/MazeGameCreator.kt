@@ -7,7 +7,7 @@ import org.dronix.kotlin.designpatterns.base.wall.Wall
 import org.dronix.kotlin.designpatterns.creational.abstractFactory.MazeFactory
 import org.dronix.kotlin.designpatterns.creational.builder.MazeBuilder
 
-class MazeGame {
+class MazeGameCreator {
     fun createMaze(): Maze {
         val aMaze = Maze()
         val room1 = Room(1)
@@ -26,11 +26,11 @@ class MazeGame {
         room2.setSide(Direction.East, Wall())
         room2.setSide(Direction.South, Wall())
         room2.setSide(Direction.West, theDoor)
-        return aMaze
 
+        return aMaze
     }
 
-    fun createMaze(mazeFactory: MazeFactory): Maze{
+    fun createMazeWithAbstractFactory(mazeFactory: MazeFactory): Maze{
 
         val aMaze = mazeFactory.makeMaze()
         val room1 = mazeFactory.makeRoom(1)
@@ -49,10 +49,11 @@ class MazeGame {
         room2.setSide(Direction.East, mazeFactory.makeWall())
         room2.setSide(Direction.South, mazeFactory.makeWall())
         room2.setSide(Direction.West, theDoor)
+
         return aMaze
     }
 
-    fun createMaze(mazeBuilder: MazeBuilder): Maze {
+    fun createMazeWithBuilder(mazeBuilder: MazeBuilder): Maze {
         return mazeBuilder
             .buildMaze()
             .buildRoom(1)
