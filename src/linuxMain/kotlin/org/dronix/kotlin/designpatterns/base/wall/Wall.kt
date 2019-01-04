@@ -6,4 +6,8 @@ open class Wall : MapSite {
     override fun enter() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    open fun clone(): Wall{
+        return Wall()
+    }
 }

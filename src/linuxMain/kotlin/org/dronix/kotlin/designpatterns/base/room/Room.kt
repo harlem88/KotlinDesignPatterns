@@ -3,14 +3,24 @@ package org.dronix.kotlin.designpatterns.base.room
 import org.dronix.kotlin.designpatterns.base.Direction
 import org.dronix.kotlin.designpatterns.base.MapSite
 
-open class Room(val roomNumber: Int) : MapSite {
-    private val sides = Array<MapSite?>(4) {null}
+open class Room : MapSite {
+    private var roomNumber: Int
 
-    fun getSite(direction: Direction){
+    constructor() {
+        roomNumber = -1
+    }
+
+    constructor(roomNumber: Int) {
+        this.roomNumber = roomNumber
+    }
+
+    private val sides = Array<MapSite?>(4) { null }
+
+    fun getSite(direction: Direction) {
 
     }
 
-    fun setSide( direction: Direction, mapSite: MapSite){
+    fun setSide(direction: Direction, mapSite: MapSite) {
 
     }
 
@@ -18,4 +28,11 @@ open class Room(val roomNumber: Int) : MapSite {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    fun initialize(roomNumber: Int){
+        this.roomNumber = roomNumber
+    }
+
+    open fun clone(): Room {
+        return Room(roomNumber)
+    }
 }
