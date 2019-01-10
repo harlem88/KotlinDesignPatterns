@@ -11,3 +11,4 @@
 * Structural Patterns
     * Bridge
     * Composite
+    * Decorator
