@@ -7,11 +7,13 @@ import org.dronix.kotlin.designpatterns.structural.decorator.BorderDecorator
 import org.dronix.kotlin.designpatterns.structural.decorator.ScrollDecorator
 import org.dronix.kotlin.designpatterns.structural.decorator.TextView
 import org.dronix.kotlin.designpatterns.structural.decorator.Window
+import org.dronix.kotlin.designpatterns.structural.facade.Compiler
 
 fun structuralPattern(){
     bridge()
     composite()
     decorator()
+    facade()
 }
 
 fun bridge(){
@@ -50,4 +52,10 @@ fun decorator(){
             ), 2
         )
     )
+}
+
+fun facade(){
+    val compiler = Compiler()
+
+    compiler.compile(ByteArray(5))
 }
