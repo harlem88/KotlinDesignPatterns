@@ -8,12 +8,14 @@ import org.dronix.kotlin.designpatterns.structural.decorator.ScrollDecorator
 import org.dronix.kotlin.designpatterns.structural.decorator.TextView
 import org.dronix.kotlin.designpatterns.structural.decorator.Window
 import org.dronix.kotlin.designpatterns.structural.facade.Compiler
+import org.dronix.kotlin.designpatterns.structural.flyweight.VehicleFactory
 
 fun structuralPattern(){
     bridge()
     composite()
     decorator()
     facade()
+    flyweight()
 }
 
 fun bridge(){
@@ -58,4 +60,16 @@ fun facade(){
     val compiler = Compiler()
 
     compiler.compile(ByteArray(5))
+}
+
+fun flyweight(){
+    val vehicleFactory = VehicleFactory()
+
+    val ferrari488spiderRed = vehicleFactory.getVehicle("ferrari488spider")
+    val ferrari488spiderBlue = vehicleFactory.getVehicle("ferrari488spider")
+    val ferrari488pista = vehicleFactory.getVehicle("ferrari488pista")
+
+    ferrari488spiderRed.setColor("red")
+    ferrari488spiderBlue.setColor("blu")
+    ferrari488pista.setColor("red&white")
 }
