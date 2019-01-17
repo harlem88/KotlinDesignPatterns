@@ -9,6 +9,7 @@ import org.dronix.kotlin.designpatterns.structural.decorator.TextView
 import org.dronix.kotlin.designpatterns.structural.decorator.Window
 import org.dronix.kotlin.designpatterns.structural.facade.Compiler
 import org.dronix.kotlin.designpatterns.structural.flyweight.VehicleFactory
+import org.dronix.kotlin.designpatterns.structural.proxy.ImageProxy
 
 fun structuralPattern(){
     bridge()
@@ -16,6 +17,7 @@ fun structuralPattern(){
     decorator()
     facade()
     flyweight()
+    proxy()
 }
 
 fun bridge(){
@@ -72,4 +74,12 @@ fun flyweight(){
     ferrari488spiderRed.setColor("red")
     ferrari488spiderBlue.setColor("blu")
     ferrari488pista.setColor("red&white")
+}
+
+fun proxy(){
+    val image = ImageProxy("img0.png")
+
+    image.draw()
+    println()
+    image.draw()
 }
