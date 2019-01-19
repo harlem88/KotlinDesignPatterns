@@ -14,3 +14,6 @@
     * Decorator
     * Facade
     * Flyweight
+
+* Behavioral Patterns
+    * Chain of Responsibility
