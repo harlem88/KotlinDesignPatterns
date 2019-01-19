@@ -14,7 +14,8 @@
     * Decorator
     * Facade
     * Flyweight
-
+    * Proxy
+    
 * Behavioral Patterns
     * Chain of Responsibility
     * Command
