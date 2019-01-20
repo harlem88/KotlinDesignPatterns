@@ -1,15 +1,18 @@
-package org.dronix.kotlin.designpatterns.structural
+package org.dronix.kotlin.designpatterns
 
 import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Application
 import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Button
 import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Dialog
 import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Topic
 import org.dronix.kotlin.designpatterns.behavioral.command.*
+import org.dronix.kotlin.designpatterns.behavioral.mediator.FontDialogDirector
 
 fun behavioralPattern(){
     chainOfResponsibility()
     command()
     commandQueue()
+    mediator()
+
 }
 
 fun chainOfResponsibility(){
@@ -37,4 +40,9 @@ fun commandQueue(){
         .addToQueue(OpenCommand(Application()))
         .addToQueue(PasteCommand(Document("default")))
         .processCommands()
+}
+
+fun mediator(){
+    val dialogFont = FontDialogDirector()
+    dialogFont.createWidgets()
 }
