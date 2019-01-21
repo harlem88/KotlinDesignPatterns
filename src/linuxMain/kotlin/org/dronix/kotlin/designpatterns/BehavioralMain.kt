@@ -6,13 +6,16 @@ import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Dialog
 import org.dronix.kotlin.designpatterns.behavioral.chainOfResponsibility.Topic
 import org.dronix.kotlin.designpatterns.behavioral.command.*
 import org.dronix.kotlin.designpatterns.behavioral.mediator.FontDialogDirector
+import org.dronix.kotlin.designpatterns.behavioral.memento.Caretaker
+import org.dronix.kotlin.designpatterns.behavioral.memento.Memento
+import org.dronix.kotlin.designpatterns.behavioral.memento.Originator
 
 fun behavioralPattern(){
     chainOfResponsibility()
     command()
     commandQueue()
     mediator()
-
+    memento()
 }
 
 fun chainOfResponsibility(){
@@ -45,4 +48,17 @@ fun commandQueue(){
 fun mediator(){
     val dialogFont = FontDialogDirector()
     dialogFont.createWidgets()
+}
+
+fun memento(){
+    val originator = Originator("STATE #1")
+    originator.setState("STATE #2")
+
+    val caretaker = Caretaker()
+    caretaker.addMemento(originator.createMemento())
+
+    originator.setState("STATE #3")
+    caretaker.addMemento(originator.createMemento())
+
+    originator.setMemento(caretaker.getMemento())
 }

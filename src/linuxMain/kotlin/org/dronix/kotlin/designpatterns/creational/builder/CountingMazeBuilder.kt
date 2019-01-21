@@ -7,21 +7,19 @@ class CountingMazeBuilder: MazeBuilder {
     private var rooms: Int = 0
     private var currentMaze: Maze? = null
 
-    override fun buildMaze(): MazeBuilder {
+    override fun buildMaze(): MazeBuilder = apply {
         currentMaze = Maze()
         doors = 0
         rooms = 0
-        return this
     }
 
-    override fun buildRoom(roomNumber: Int): MazeBuilder {
+
+    override fun buildRoom(roomNumber: Int): MazeBuilder = apply {
         rooms++
-        return this
     }
 
-    override fun buildDoor(roomFrom: Int, roomTo: Int): MazeBuilder {
+    override fun buildDoor(roomFrom: Int, roomTo: Int): MazeBuilder = apply {
         doors++
-        return this
     }
 
     public fun getCounts(): Count {

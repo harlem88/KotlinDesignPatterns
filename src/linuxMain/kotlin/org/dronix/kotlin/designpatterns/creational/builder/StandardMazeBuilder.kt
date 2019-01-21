@@ -10,12 +10,11 @@ import org.dronix.kotlin.designpatterns.base.wall.Wall
 class StandardMazeBuilder : MazeBuilder {
     private var currentMaze: Maze? = null
 
-    override fun buildMaze(): MazeBuilder {
+    override fun buildMaze(): MazeBuilder = apply {
         currentMaze = Maze()
-        return this
     }
 
-    override fun buildRoom(roomNumber: Int): MazeBuilder {
+    override fun buildRoom(roomNumber: Int): MazeBuilder = apply {
         currentMaze = currentMaze ?: Maze()
 
         if (currentMaze?.getRoomFromNumber(roomNumber) == null) {
@@ -28,10 +27,9 @@ class StandardMazeBuilder : MazeBuilder {
             room.setSide(Direction.East, Wall())
             room.setSide(Direction.West, Wall())
         }
-        return this
     }
 
-    override fun buildDoor(roomFrom: Int, roomTo: Int): MazeBuilder {
+    override fun buildDoor(roomFrom: Int, roomTo: Int): MazeBuilder = apply {
         currentMaze = currentMaze ?: Maze()
 
         val room1 = currentMaze?.getRoomFromNumber(roomFrom)
@@ -43,8 +41,6 @@ class StandardMazeBuilder : MazeBuilder {
             room1.setSide(CommonWall.getDirection(room1, room2), door)
             room2.setSide(CommonWall.getDirection(room2, room1), door)
         }
-
-        return this
     }
 
     override fun build(): Maze {

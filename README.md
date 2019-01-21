@@ -20,3 +20,4 @@
     * Chain of Responsibility
     * Command
     * Mediator
+    * Memento
