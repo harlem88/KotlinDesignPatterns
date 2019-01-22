@@ -9,6 +9,10 @@ import org.dronix.kotlin.designpatterns.behavioral.mediator.FontDialogDirector
 import org.dronix.kotlin.designpatterns.behavioral.memento.Caretaker
 import org.dronix.kotlin.designpatterns.behavioral.memento.Memento
 import org.dronix.kotlin.designpatterns.behavioral.memento.Originator
+import org.dronix.kotlin.designpatterns.behavioral.observer.AnalogClock
+import org.dronix.kotlin.designpatterns.behavioral.observer.ClockTimer
+import org.dronix.kotlin.designpatterns.behavioral.observer.DigitalClock
+import org.dronix.kotlin.designpatterns.behavioral.observer.Subject
 
 fun behavioralPattern(){
     chainOfResponsibility()
@@ -16,6 +20,7 @@ fun behavioralPattern(){
     commandQueue()
     mediator()
     memento()
+    observer()
 }
 
 fun chainOfResponsibility(){
@@ -61,4 +66,15 @@ fun memento(){
     caretaker.addMemento(originator.createMemento())
 
     originator.setMemento(caretaker.getMemento())
+}
+
+fun observer(){
+    val subject = Subject((ClockTimer(100)))
+
+    val observerD = DigitalClock(subject)
+    val observerA = AnalogClock(subject)
+
+    subject.state = ClockTimer(120)
+    subject.state = ClockTimer(130)
+
 }

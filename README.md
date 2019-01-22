@@ -21,3 +21,4 @@
     * Command
     * Mediator
     * Memento
+    * Observer
