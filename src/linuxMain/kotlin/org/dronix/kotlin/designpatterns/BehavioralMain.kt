@@ -13,6 +13,7 @@ import org.dronix.kotlin.designpatterns.behavioral.observer.AnalogClock
 import org.dronix.kotlin.designpatterns.behavioral.observer.ClockTimer
 import org.dronix.kotlin.designpatterns.behavioral.observer.DigitalClock
 import org.dronix.kotlin.designpatterns.behavioral.observer.Subject
+import org.dronix.kotlin.designpatterns.behavioral.state.TCPConnection
 
 fun behavioralPattern(){
     chainOfResponsibility()
@@ -21,6 +22,7 @@ fun behavioralPattern(){
     mediator()
     memento()
     observer()
+    state()
 }
 
 fun chainOfResponsibility(){
@@ -76,5 +78,13 @@ fun observer(){
 
     subject.state = ClockTimer(120)
     subject.state = ClockTimer(130)
+}
+
+fun state(){
+    val tcpConnection = TCPConnection()
+
+    tcpConnection.activeOpen()
+    tcpConnection.transmit(byteArrayOf(0x01, 0x01, 0x74))
+    tcpConnection.close()
 
 }
