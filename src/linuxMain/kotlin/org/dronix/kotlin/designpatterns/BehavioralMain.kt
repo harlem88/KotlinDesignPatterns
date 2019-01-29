@@ -14,6 +14,7 @@ import org.dronix.kotlin.designpatterns.behavioral.observer.ClockTimer
 import org.dronix.kotlin.designpatterns.behavioral.observer.DigitalClock
 import org.dronix.kotlin.designpatterns.behavioral.observer.Subject
 import org.dronix.kotlin.designpatterns.behavioral.state.TCPConnection
+import org.dronix.kotlin.designpatterns.behavioral.strategy.*
 
 fun behavioralPattern(){
     chainOfResponsibility()
@@ -23,6 +24,7 @@ fun behavioralPattern(){
     memento()
     observer()
     state()
+    strategy()
 }
 
 fun chainOfResponsibility(){
@@ -86,5 +88,18 @@ fun state(){
     tcpConnection.activeOpen()
     tcpConnection.transmit(byteArrayOf(0x01, 0x01, 0x74))
     tcpConnection.close()
+
+}
+
+fun strategy(){
+    val compositor1 = Composition(SimpleCompositor())
+    compositor1.repair()
+
+    val compositor2 = Composition(TeXCompositor())
+    compositor2.repair()
+
+    val compositor3 = Composition(ArrayCompositor())
+    compositor3.repair()
+
 
 }
